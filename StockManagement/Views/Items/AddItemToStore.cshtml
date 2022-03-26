@@ -1,0 +1,39 @@
+﻿@model ItemStore
+
+<h1>add category to store</h1>
+
+@{
+    int.TryParse(Url.ActionContext.RouteData.Values["id"].ToString(), out int ItemId);
+}
+
+<p>
+    ARE YOU SURE YOU WANT TO add this item to your current store?
+</p>
+
+<form method="post" class="d-inline" asp-action="ConfirmAddItemToStore" asp-controller="Items"
+      asp-route-StoreId="@Context.Request.Query["StoreId"]"
+      asp-route-id="@ItemId"
+      asp-route-CategoryId="@Context.Request.Query["CategoryId"]">
+
+    <div class="row mb-4">
+        <div class="col-6">
+            <label>
+                @Html.DisplayNameFor(x => x.Zone)
+            </label>
+            <input asp-for="@Model.Zone" class="form-control" />
+        </div>
+        <div class="col-6">
+            <label>
+                @Html.DisplayNameFor(x => x.Level)
+            </label>
+            <input asp-for="@Model.Level" class="form-control" />
+        </div>
+        <div class="col-6">
+            <label>
+                @Html.DisplayNameFor(x => x.Queue)
+            </label>
+            <input asp-for="@Model.Queue" class="form-control" />
+        </div>
+        <input type="submit" value="ADD" class="btn btn-success" />
+</form>
+

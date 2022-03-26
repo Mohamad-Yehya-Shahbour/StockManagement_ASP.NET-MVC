@@ -1,0 +1,33 @@
+﻿@model List<SubItem>
+
+<style>
+    img {
+        max-height: 200px;
+        min-height: 200px;
+        min-width: 200px;
+        max-width: 200px;
+        padding: 10px;
+    }
+</style>
+
+<h1>Subitems</h1>
+
+<a class="btn btn-primary text-white mb-5" asp-action="Add" asp-controller="SubItems" asp-route-id="@Url.ActionContext.RouteData.Values["id"]">ADD SubItem</a>
+@{
+    foreach (SubItem subItem in Model)
+    {
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                <a class="btn btn-warning text-white" asp-action="Edit" asp-controller="SubItems" asp-route-id="@subItem.Id">EDIT</a>
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-controller="SubItems" asp-route-id="@subItem.Id">DELETE</a>
+            </li>
+            <li class="list-group-item"> @subItem.Name</li>
+            <li class="list-group-item">
+                <img src="@subItem.ImageUrl" />
+            </li>
+
+        </ul>
+    }
+
+
+}

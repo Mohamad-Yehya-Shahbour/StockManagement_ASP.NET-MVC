@@ -1,0 +1,21 @@
+﻿@model Image
+
+    <h1>adding image to Item</h1> 
+
+
+    <div class="container">
+        <form method="post" asp-action="ConfirmAddImage" asp-controller="Images"
+              asp-route-id="@Url.ActionContext.RouteData.Values["id"]" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-6">
+                    <label>
+                        @Html.DisplayNameFor(x => x.ImageUrl)
+                    </label>
+                    <input type="file" asp-for="formFile" />
+                </div>
+                <div class="col-6">
+                    <input type="submit" class="btn btn-success" value="save" />
+                </div>
+            </div>
+        </form>
+    </div>

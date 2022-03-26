@@ -1,0 +1,21 @@
+﻿@model Category
+
+<h1>UPDATE category in category list</h1>
+
+<div class="container">
+    <form method="post" asp-action="Update" asp-controller="Categories" enctype="multipart/form-data">
+        <div class="row">
+            <input type="hidden" asp-for="Id" />
+            <div class="col-6">
+                <label>
+                    @Html.DisplayNameFor(x => x.Name)
+                </label>
+                <input type="text" asp-for="Name" class="form-control" />
+            </div>
+            <div class="col-6">
+                <input type="submit" class="btn btn-success" value="save" />
+            </div>
+
+        </div>
+    </form>
+</div>

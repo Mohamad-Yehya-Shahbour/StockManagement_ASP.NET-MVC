@@ -1,0 +1,16 @@
+﻿@model ItemStore
+
+@{
+    int.TryParse(Url.ActionContext.RouteData.Values["id"].ToString(), out int ItemId);
+}
+<p>
+    ARE YOU SURE YOU WANT TO DELETE this item from your current store ?
+</p>
+<p>
+    <form method="post" class="d-inline" asp-action="ConfirmDeleteItemFromStore"
+          asp-controller="items"
+          asp-route-id="@ItemId"
+          asp-route-StoreId="@Context.Request.Query["StoreId"]">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</p>

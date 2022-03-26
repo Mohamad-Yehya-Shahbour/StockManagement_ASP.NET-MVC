@@ -1,0 +1,32 @@
+﻿@using StockManagement.ViewModel;
+
+@model List<CategoryStoreVM>
+
+<h1>Categoriess:</h1>
+
+@{
+    int.TryParse(Url.ActionContext.RouteData.Values["id"].ToString(), out int StoreId);
+}
+<a class="btn btn-primary text-white mb-5" asp-action="ShowCategoryList" asp-controller="Categories" asp-route-id="@StoreId">go to CATEGORY LIST!</a>
+
+@{
+
+    foreach (CategoryStoreVM categoryStoreVM in Model)
+    {
+
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                <a class="btn btn-primary text-white" asp-action="Index" asp-controller="Items"
+                   asp-route-StoreId="@categoryStoreVM.StoreId"
+                   asp-route-CategoryId="@categoryStoreVM.CategoryId">GO TO Items!</a>
+                <a class="btn btn-danger text-white" asp-action="DeleteCategFromStore" asp-controller="Categories"
+                   asp-route-id="@categoryStoreVM.CategoryId"
+                   asp-route-StoreId="@StoreId">DELETE category from store</a>
+            </li>
+            <li class="list-group-item">filtered category: @categoryStoreVM.CategoryName</li>
+
+        </ul>
+    }
+
+
+}

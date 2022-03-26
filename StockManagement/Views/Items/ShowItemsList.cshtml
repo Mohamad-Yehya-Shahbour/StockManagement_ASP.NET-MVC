@@ -1,0 +1,25 @@
+﻿@model List<Item>
+
+
+
+<h1>itemsList</h1>
+
+<a class="btn btn-primary text-white mb-5" asp-action="AddItem" asp-controller="Items" asp-route-id="@Url.ActionContext.RouteData.Values["id"]">ADD Item for the current categ</a>
+@{
+    foreach (Item Item in Model)
+    {
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                <a class="btn btn-primary text-white mb-5" asp-action="AddItemToStore" asp-controller="Items"
+                   asp-route-id="@Item.Id"
+                   asp-route-StoreId="@Context.Request.Query["StoreId"]"
+                   asp-route-CategoryId="@Url.ActionContext.RouteData.Values["id"]" >ADD Item for the current store</a>
+                <a class="btn btn-warning text-white" asp-action="Edit" asp-controller="Items" asp-route-id="@Item.Id" asp-route-CategoryId="@Url.ActionContext.RouteData.Values["id"]" >EDIT</a>
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-controller="Items" asp-route-id="@Item.Id" asp-route-CategoryId="@Url.ActionContext.RouteData.Values["id"]">DELETE</a>
+            </li>
+            <li class="list-group-item"> @Item.Name</li>
+        </ul>
+    }
+
+
+}

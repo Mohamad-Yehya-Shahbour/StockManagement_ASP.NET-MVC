@@ -1,0 +1,50 @@
+﻿@using StockManagement.ViewModel;
+@model List<ItemStoreVM>
+<style>
+    img {
+        max-height: 200px;
+        min-height: 200px;
+        min-width: 200px;
+        max-width: 200px;
+        padding: 10px;
+    }
+</style>
+<h1>items</h1>
+
+<a class="btn btn-primary text-white mb-5" asp-action="ShowItemsList" asp-controller="Items"
+   asp-route-id="@Context.Request.Query["CategoryId"]"
+   asp-route-StoreId="@Context.Request.Query["StoreId"]" >GO TO items List of this category!</a>
+
+@{
+    foreach (ItemStoreVM itemStoreVM in Model)
+    {
+
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+
+                <a class="btn btn-primary text-white" asp-action="Index" asp-controller="SubItems"
+                   asp-route-id="@itemStoreVM.ItemId">GO TO SubItems!</a>
+
+                <a class="btn btn-danger text-white" asp-action="DeleteItemFromStore"
+                   asp-controller="Items" asp-route-id="@itemStoreVM.ItemId"
+                   asp-route-StoreId="@Context.Request.Query["StoreId"]">REMOVE item from this store</a>
+
+                <a class="btn btn-primary text-white" asp-action="AddImage" asp-controller="Images"
+                   asp-route-id="@itemStoreVM.ItemId">ADD image!</a>
+
+            </li>
+            <li class="list-group-item"> @itemStoreVM.ItemName</li>
+            <li class="list-group-item">
+                <div class="d-flex flex-wrap">
+                    <h5>Images:</h5>
+                    @foreach (Image image in itemStoreVM.ImageUrls)
+                    {
+                        <img src="@image.ImageUrl" />
+                    }
+                </div>
+            </li>
+        </ul>
+    }
+
+
+}

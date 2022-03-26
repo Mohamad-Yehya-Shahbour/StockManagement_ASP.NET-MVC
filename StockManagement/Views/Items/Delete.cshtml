@@ -1,0 +1,11 @@
+﻿@model Item
+
+<p>
+    ARE YOU SURE YOU WANT TO DELETE @Model.Name ITEM ?
+</p>
+<p>
+
+    <form method="post" class="d-inline" asp-action="ConfirmDelete" asp-controller="Items" asp-route-id="@Model.Id" asp-route-CategoryId="@Context.Request.Query["CategoryId"]">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</p>

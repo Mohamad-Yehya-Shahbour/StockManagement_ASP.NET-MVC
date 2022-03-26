@@ -1,0 +1,26 @@
+﻿@model Branche
+<h1>UPDATE BRANCHE</h1>
+<div class="container">
+    <form asp-action="Update" asp-controller="Branches" enctype="multipart/form-data">
+        <div class="row">
+            <input type="hidden" asp-for="Id" />
+            <div class="col-6">
+                <label>
+                    @Html.DisplayNameFor(x => x.Name)
+                </label>
+                <input type="text" asp-for="Name" class="form-control" />
+            </div>
+           
+            <div class="col-6">
+                <label>
+                    @Html.DisplayNameFor(x => x.ManagerName)
+                </label>
+                <input type="text" asp-for="ManagerName" class="form-control" />
+            </div>
+            <div class="col-6">
+                <input type="submit" class="btn btn-success" value="save" />
+            </div>
+
+        </div>
+    </form>
+</div>

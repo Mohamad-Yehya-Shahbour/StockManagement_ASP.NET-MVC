@@ -1,0 +1,26 @@
+﻿@model List<Category>
+
+@{
+    int.TryParse(Url.ActionContext.RouteData.Values["id"].ToString(), out int StoreId);
+}
+
+<a class="btn btn-primary text-white mb-5" asp-action="Add" asp-controller="Categories">ADD CATEGORY</a>
+@{
+    foreach (Category category in Model)
+    {
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                <a class="btn btn-warning text-white" asp-action="Edit" asp-controller="Categories" asp-route-id="@category.Id">EDIT</a>
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-controller="Categories" asp-route-id="@category.Id">DELETE</a>
+                <a class="btn btn-primary text-white mb-5"
+                   asp-action="AddCategoryToStore"
+                   asp-controller="Categories"
+                   asp-route-id="@category.Id"
+                   asp-route-StoreId="@StoreId">ADD CATEGORY TO CURRENT STORE</a>
+            </li>
+            <li class="list-group-item">Category Name: @category.Name</li>
+        </ul>
+    }
+
+
+}

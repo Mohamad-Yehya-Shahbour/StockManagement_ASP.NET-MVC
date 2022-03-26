@@ -1,0 +1,21 @@
+﻿@model Item
+
+<h1>adding Item (to current category)</h1>
+
+<div class="container">
+    <form method="post" asp-action="ConfirmAddItem" asp-controller="Items"
+          asp-route-id="@Url.ActionContext.RouteData.Values["id"]" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-6">
+                <label>
+                    @Html.DisplayNameFor(x => x.Name)
+                </label>
+                <input type="text" asp-for="@Model.Name" class="form-control" />
+            </div>
+            <div class="col-6">
+                <input type="submit" class="btn btn-success" value="ADD" />
+            </div>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,18 @@
+﻿@model CategoryStore
+
+<h1>add category to store</h1>
+
+@{
+    int.TryParse(Url.ActionContext.RouteData.Values["id"].ToString(), out int StoreId);
+}
+
+<p>
+    ARE YOU SURE YOU WANT TO add this category to your current store?
+</p>
+<p>
+    <form method="post" class="d-inline" asp-action="ConfirmAddCategoryToStore" asp-controller="Categories"
+          asp-route-StoreId="@Context.Request.Query["StoreId"]"
+          asp-route-id="@StoreId">
+        <input type="submit" value="ADD" class="btn btn-success" />
+    </form>
+</p>

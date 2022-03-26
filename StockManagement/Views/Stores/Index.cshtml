@@ -1,0 +1,23 @@
+﻿@model List<Store>
+
+@{
+    int.TryParse(Url.ActionContext.RouteData.Values["id"].ToString(), out int BrancheId);
+}
+<a class="btn btn-primary text-white mb-5" asp-action="Add" asp-controller="Stores" asp-route-id="@BrancheId">ADD STORE</a>
+
+@{
+    foreach (Store store in Model)
+    {
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+                <a class="btn btn-primary text-white"  asp-action="Index" asp-controller="Categories" asp-route-id="@store.Id">GO TO Categories!</a>
+                <a class="btn btn-warning text-white" asp-action="Edit" asp-controller="Stores" asp-route-id="@store.Id">EDIT</a>
+                <a class="btn btn-danger text-white" asp-action="Delete" asp-controller="Stores" asp-route-id="@store.Id">DELETE</a>
+            </li>
+            <li class="list-group-item">Location: @store.Name</li>
+
+        </ul>
+    }
+
+
+}
